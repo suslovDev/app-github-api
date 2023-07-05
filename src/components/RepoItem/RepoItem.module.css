@@ -42,6 +42,7 @@
 .btn {
   display: flex;
   align-items: center;
+  justify-content: center;
   border: 1.2px solid #d0d7de;
   border-radius: 2em;
   background: transparent;

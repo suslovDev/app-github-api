@@ -5,9 +5,11 @@ import Star from "./Star";
 const RepoItem = ({
   repoName,
   repoLanguage,
+  isFavorite,
 }: {
   repoName: string;
   repoLanguage: string;
+  isFavorite: boolean;
 }): JSX.Element => {
   return (
     <div className={styles.wrap}>
@@ -22,9 +24,13 @@ const RepoItem = ({
         </div>
       </div>
       <div className={styles.actions}>
-        <button className={styles.btn}>Добавить в избранное</button>
         <button className={styles.btn}>
-          <span>Поставить звезду (+1)</span>
+          {isFavorite ? "Удалить из избранного" : "Добавить в избранное"}
+        </button>
+        <button className={styles.btn}>
+          <span>
+            {isFavorite ? "Забрать свою звезду (-1)" : "Поставить звезду (+1)"}
+          </span>
           <span className={styles.star}>
             <Star />
           </span>

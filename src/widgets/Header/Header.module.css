@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 40px;
+  padding-right: 40px;
   border-bottom: 2px solid #d8dee4;
   height: 60px;
   width: 100%;
@@ -11,23 +11,18 @@
   position: fixed;
 }
 
-.btn {
-  padding: 3px 12px;
-  background-color: #1a7f37;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  width: 70px;
-  height: 28px;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #63a37a;
-}
-
 .auth,
 .links {
   width: 50%;
   height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.auth {
+  justify-content: flex-start;
+}
+
+.links {
+  justify-content: flex-end;
 }
