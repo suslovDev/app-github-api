@@ -1,14 +1,14 @@
 import { ReactNode } from "react";
 import { useSelector } from "react-redux";
 
+import NotAuthorized from "../NotAuthorized/NotAuthorized";
+
 const RequireAuth = ({ children }: { children: ReactNode }): JSX.Element => {
   const { isAuth } = useSelector((state: any) => state.auth);
 
-  console.log(isAuth);
-
   if (!isAuth) {
     return (
-      <>Вы не авторизованны! Нажмите `Войти в левом верхнем углу страницы`</>
+      <NotAuthorized text="Похоже, что вы не авторизованы! Нажмите `Войти`" />
     );
   }
 

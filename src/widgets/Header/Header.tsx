@@ -1,13 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
-import LoginButton from "../../components/UI/LoginButton/LoginButton";
-import Navbar from "../Navdar/Navbar";
-import styles from "./Header.module.css";
-import { logOut } from "../../store/slices/authSlice";
-import { CLIENT_ID } from "../../const/clientId";
 import { useNavigate } from "react-router-dom";
 
+import { LoginButton } from "../../components/UI/LoginButton";
+import { CLIENT_ID } from "../../const/clientId";
+import { logOut } from "../../store/slices/authSlice";
+import { Navbar } from "../Navdar";
+import { UserLogo } from "../UserLogo";
+import styles from "./Header.module.css";
+
 const Header = (): JSX.Element => {
-  const { token } = useSelector((state: any) => state.auth);
+  const { token, user } = useSelector((state: any) => state.auth);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -18,6 +21,7 @@ const Header = (): JSX.Element => {
   };
 
   const handleLogout = () => {
+    localStorage.removeItem("accessToken");
     navigate("/");
     dispatch(logOut());
   };
@@ -31,6 +35,7 @@ const Header = (): JSX.Element => {
           <LoginButton onClick={handleLogout}>Выйти</LoginButton>
         )}
       </div>
+      <> {user && <UserLogo {...user} />}</>
       <div className={styles.links}>
         <Navbar />
       </div>

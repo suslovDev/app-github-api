@@ -1,10 +1,7 @@
-import Container from "../../components/Layout/Container/Container";
-import SearchRepos from "../../components/SearchRepos/SearchRepos";
-
+import { Container } from "../../components/Layout/Container";
+import { SearchRepos } from "../../components/SearchRepos";
 
 const HomePage = (): JSX.Element => {
-
-
   return (
     <Container>
       <SearchRepos />

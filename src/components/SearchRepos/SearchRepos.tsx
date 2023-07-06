@@ -1,6 +1,7 @@
 import { useState } from "react";
-import Repos from "../Repos/Repos";
-import SearchInput from "../SearchInput/SearchInput";
+
+import { Repos } from "../Repos";
+import { SearchInput } from "../SearchInput";
 import styles from "./SearchRepos.module.css";
 
 // in this component should get repos from api
@@ -17,9 +18,9 @@ const SearchRepos = (): JSX.Element => {
       />
       <Repos
         repos={[
-          { language: "JavaScript", name: "some_one" },
-          { language: "TypeScript", name: "some_other" },
-          { language: "Kotlin", name: "some" },
+          { language: "JavaScript", name: "some_one", id: 1 },
+          { language: "TypeScript", name: "some_other", id: 2 },
+          { language: "Kotlin", name: "some", id: 3 },
         ]}
       />
     </div>

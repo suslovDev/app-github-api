@@ -1,35 +1,20 @@
-import { useDispatch } from "react-redux";
-import Routing from "./pages";
 import { useEffect } from "react";
-import { setIsAuth, setToken } from "./store/slices/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+
+import useAuthorize from "./components/hooks/useAuthorize";
+import Routing from "./pages";
+import { getViewer } from "./store/slices/authSlice";
 
 const App = (): JSX.Element => {
-  const dispatch = useDispatch();
+  const dispatch: any = useDispatch();
+  useAuthorize();
+
+  const { isAuth } = useSelector((state: any) => state.auth);
 
   useEffect(() => {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const codeParam = urlParams.get("code");
+    dispatch(getViewer());
+  }, [isAuth, dispatch]);
 
-    if (codeParam) {
-      const getAccessToken = async () => {
-        await fetch("http://localhost:4000/getAccessToken?code=" + codeParam, {
-          method: "GET",
-        })
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            console.log(data);
-            if (data.access_token) {
-              dispatch(setToken(data.access_token));
-              dispatch(setIsAuth());
-            }
-          });
-      };
-      getAccessToken();
-    }
-  }, []);
   return <Routing />;
 };
 

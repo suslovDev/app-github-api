@@ -12,7 +12,11 @@ const Repos = ({
     <ul className={styles.list}>
       {repos.map((repo: any) => (
         <li key={repo.id}>
-          <RepoItem repoLanguage={repo.language} repoName={repo.name} isFavorite={isFavorite}/>
+          <RepoItem
+            repoLanguage={repo.language}
+            repoName={repo.name}
+            isFavorite={isFavorite}
+          />
         </li>
       ))}
     </ul>
