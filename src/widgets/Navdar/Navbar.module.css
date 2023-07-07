@@ -2,9 +2,12 @@
   display: flex;
   gap: 32px;
   height: 100%;
+  position: absolute;
+  bottom: -2px;
 }
 
 .navbar > * {
+  border: 2px solid transparent;
   text-decoration: none;
   height: 100%;
   display: flex;
@@ -16,5 +19,4 @@
 .active {
   border-bottom: 2px solid #fd8c73;
   position: relative;
-  bottom: -1.5px;
 }

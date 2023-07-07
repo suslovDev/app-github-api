@@ -16,7 +16,9 @@ const Header = (): JSX.Element => {
 
   const handleLoginWhithGithub = () => {
     window.location.assign(
-      "https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID
+      "https://github.com/login/oauth/authorize?client_id=" +
+        CLIENT_ID +
+        "&scope=public_repo"
     );
   };
 

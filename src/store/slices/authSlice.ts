@@ -21,33 +21,6 @@ export const getViewer = createAsyncThunk("auth/getViewer", async () => {
   return data.data.viewer;
 });
 
-export const getRepos = createAsyncThunk("auth/getRepos", async (searchStr: string) => {
-  const response = await fetch("https://api.github.com/graphql", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-      Authorization: `bearer ${localStorage.getItem("accessToken")}`,
-    },
-    body: JSON.stringify({
-      query: `query MyQuery {
-        search(type: REPOSITORY, first: 10, query: "${searchStr}") {
-          edges {
-            node {
-              ... on Repository {
-                id
-                name
-              }
-            }
-          }
-        }
-      }`,
-    }),
-  });
-  const data = await response.json();
-
-  return data.data.search.edges;
-});
-
 const initialState: any = {
   token: null,
   isAuth: false,
@@ -74,6 +47,7 @@ const authSlice = createSlice({
     logOut(state) {
       state.isAuth = false;
       state.token = null;
+      state.user = null;
     },
     setUser(state, action) {
       state.user = action.payload;
@@ -82,9 +56,6 @@ const authSlice = createSlice({
   extraReducers: {
     [getViewer.fulfilled as any]: (state, action) => {
       state.user = action.payload;
-    },
-    [getRepos.fulfilled as any]: (state, { payload }) => {
-      state.repos = payload;
     },
   },
 });
