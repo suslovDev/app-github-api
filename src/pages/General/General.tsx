@@ -1,8 +1,9 @@
 import { Outlet } from "react-router";
 
-import styles from "./General.module.css";
-import Header from "../../widgets/Header/Header";
 import Footer from "../../widgets/Footer/Footer";
+import Header from "../../widgets/Header/Header";
+
+import styles from "./General.module.css";
 
 const General = (): JSX.Element => {
   return (
