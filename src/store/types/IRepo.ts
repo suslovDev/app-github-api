@@ -1,4 +1,4 @@
-export interface IRepo {
+export interface ITransformedRepo {
     id: string;
     url: string;
     name: string;
@@ -6,5 +6,5 @@ export interface IRepo {
     viewerHasStarred: string;
 }
 
-export type TPartialRepo = Partial<IRepo>;
+export type TPartialRepo = Partial<ITransformedRepo>;
 
